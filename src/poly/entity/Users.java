@@ -4,12 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name="Users")
 public class Users {
+	
 	@Id
+	//@NotBlank(message="Không được để trống username !")
 	private String username;
+	
+	//@NotBlank(message="Không được để trống password !")
 	private String password;
+	
+	//@NotBlank(message="Không được để trống fullname !")
 	private String fullname;
 	
 	public String getUsername() {

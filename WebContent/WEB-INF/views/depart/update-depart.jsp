@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -17,8 +18,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
 	crossorigin="anonymous"></script>
 </head>
-<body class="bg-primary">
-		
+<body class="bg-primary">		
 		<main>
 				<div class="container">
 					<div class="row justify-content-center">
@@ -34,8 +34,7 @@
 										<div class="form-group">
 											<label class="small mb-1" for="inputPassword">Tên
 												Phòng Ban</label>
-											<form:input path="name" class="form-control py-4"
-												id="inputPassword" />
+											<form:input path="name" class="form-control py-4"/>
 										</div>
 										<div>
 											<button  class="btn btn-primary btn-block">Cập nhập</button>

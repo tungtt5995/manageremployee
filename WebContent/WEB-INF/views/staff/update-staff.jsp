@@ -38,13 +38,6 @@
 										<div class="form-row">
 											<div class="col-md-6">
 												<div class="form-group">
-													<label class="small mb-1" for="inputFirstName">ID</label>
-													<form:input path="id" class="form-control py-4"
-														id="inputFirstName" type="text" />
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group">
 													<label class="small mb-1" for="inputLastName">Name</label>
 													<form:input path="name" class="form-control py-4"
 														id="inputLastName" type="text" />
@@ -56,7 +49,7 @@
 												<div class="form-group">
 													<label class="small mb-1" for="inputFirstName">Phone</label>
 													<form:input path="phone" class="form-control py-4"
-														id="inputFirstName" type="text" />
+														id="inputphone" type="text" />
 												</div>
 											</div>
 
@@ -64,7 +57,7 @@
 												<div class="form-group">
 													<label class="small mb-1" for="inputLastName">Email</label>
 													<form:input path="email" class="form-control py-4"
-														id="inputLastName" type="text" />
+														id="inputEmail" type="text" />
 												</div>
 											</div>
 										</div>								
@@ -73,16 +66,16 @@
 											<form:radiobutton path="gender" value="false" label="Nam" />
 											<form:radiobutton path="gender" value="true" label="Nữ" />
 										</div>
+										<div>
+										</div>
 										
 											<div class="form-group">
 												<label for="exampleFormControlFile1">Ảnh</label>
 													${message2 }
 												<form:hidden path="photo" /> 
 												<input type="file" name="image" class="form-control-file"
-													id="exampleFormControlFile1"> 
-												
-											</div>
-										
+													id="exampleFormControlFile1"> 												
+											</div>										
 										<label>Phòng Ban</label>
 										<form:select path="departid.id" items="${depart}"
 											itemValue="id" itemLabel="name" class="form-control" />
@@ -123,20 +116,7 @@
 				</div>
 			</main>
 		</div>
-		<div id="layoutAuthentication_footer">
-			<footer class="py-4 bg-light mt-auto">
-				<div class="container-fluid">
-					<div
-						class="d-flex align-items-center justify-content-between small">
-						<div class="text-muted">Copyright &copy; Your Website 2020</div>
-						<div>
-							<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-								&amp; Conditions</a>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
+	
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		crossorigin="anonymous"></script>

@@ -11,7 +11,8 @@ public interface StaffDao {
 
 	public boolean editStaff(Staffs staff);
 
-	public Staffs infoStaff(String id);
+	public Staffs infoStaff(int id);
 
-	public boolean deleteStaff(String id);
+	public boolean deleteStaff(int id);
+	
 }

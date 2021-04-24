@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -24,10 +25,10 @@
 	
 			<main>
 				<div class="container-fluid">
-					<h1 class="mt-4">Tables</h1>
+					<h1 class="mt-4">Danh sách phòng ban</h1>
 					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-						<li class="breadcrumb-item active">Tables</li>
+						<li class="breadcrumb-item"><a href="home/index">Trang chủ</a></li>
+						<li class="breadcrumb-item active">Phòng ban</li>
 					</ol>
 					<div class="card mb-4">
 						<div class="card-header">
@@ -50,7 +51,7 @@
 									<c:forEach var="depart" items="${listDepart}"
 										varStatus="status">
 										<tr>
-											<td>${depart.id}</td>
+											<td>PH ${depart.id}</td>
 											<td>${depart.name}</td>
 
 											<td>

@@ -57,7 +57,7 @@ public class DepartDAOImpl implements DepartDao {
 
 	@Override
 	public boolean editDepart(Departs depart) {
-		Session session = this.factory.getCurrentSession();
+		Session session = this.factory.openSession();
 		Transaction t = session.beginTransaction();
 		try {
 			session.update(depart);
@@ -74,7 +74,7 @@ public class DepartDAOImpl implements DepartDao {
 	}
 
 	@Override
-	public Departs inforDepart(String id) {
+	public Departs inforDepart(Integer id) {
 		Session session = this.factory.openSession();
 		try {
 			Departs depart = (Departs) session.get(Departs.class, id);
@@ -85,6 +85,7 @@ public class DepartDAOImpl implements DepartDao {
 			session.close();
 		}
 		return null;
+		
 	}
 
 }

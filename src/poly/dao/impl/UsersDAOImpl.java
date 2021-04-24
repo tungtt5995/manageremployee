@@ -1,7 +1,5 @@
 package poly.dao.impl;
 
-
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -59,24 +57,88 @@ public interface UsersDAOImpl {
 			}
 		}
 
-//		@Override
-//		public boolean editUser(Users users) {
-//			
-//			Session session = this.factory.getCurrentSession();
-//			Transaction t = session.beginTransaction();
-//			try {
-//				session.update(users);
-//				t.commit();
-//				return true;
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				t.rollback();
-//				return false;
-//			}finally {
-//				session.close();
-//			}			
-//			
-//			
-//		}
+		@Override
+		public Users inforUser(String username) {
+			Session session = factory.openSession();
+			try {
+				Users user = (Users) session.get(Users.class, username);
+				return user;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				session.flush();
+				session.close();
+			}
+			return null;
+		}
+
+		@Override
+		public boolean deleteUser(String username) {
+			Session session = factory.openSession();
+			Transaction t = session.beginTransaction();
+			Users users = inforUser(username);
+			if (users == null) {
+				return false;				
+			}
+			try {
+				session.delete(username, users);
+				t.commit();
+				System.out.println("Deleted");
+				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			} finally {
+				session.close();
+			}
+		}
+
+	
+
+		@Override
+		public boolean editUser(Users users) {		
+			Session session = factory.openSession();
+			Transaction t = session.beginTransaction();
+			try {
+				session.update(users);
+				t.commit();
+				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				t.rollback();
+				return false;
+			}finally {
+				session.close();
+			}			
+			
+			
+		}
+
+		@Override
+		public boolean checkLogin(String username, String password) {
+			Session session = this.factory.getCurrentSession();
+			Users user = (Users) session.get(Users.class, username);
+			if (user == null) {
+				return false;
+			}
+			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+				return true;
+			}
+			return false;
+		}
+
+		@Override
+		public Users login(String username, String password) {
+			Session session = factory.openSession();
+			Query query = session.createQuery("from Users where username = :username and password = :password");
+			query.setString("username", username);
+			query.setString("password", password);
+			Users user = (Users) query.uniqueResult();
+			return user;
+		}
+
+	
+
+		
 	}
 }

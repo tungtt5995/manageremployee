@@ -20,56 +20,50 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
 	crossorigin="anonymous"></script>
 </head>
-<body class="sb-nav-fixed">	
-			<main>
-				<div class="container-fluid">
-					<h1 class="mt-4">Tables</h1>
-					<ol class="breadcrumb mb-4">
-						<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-						<li class="breadcrumb-item active">Tables</li>
-					</ol>
+<body class="sb-nav-fixed">
+	<main>
+		<div class="container-fluid">
+			<h1 class="mt-4">Danh sách users</h1>
+			<ol class="breadcrumb mb-4">
+				<li class="breadcrumb-item"><a href="home/index">Trang chủ</a></li>
+				<li class="breadcrumb-item active">User</li>
+			</ol>
 
-					<div class="card mb-4">
-						<div class="card-header">
-							<i class="fas fa-table mr-1"></i> DataTable Example
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%"
-									cellspacing="0">
-									<thead>
-										<tr>
-											<th>User</th>
-											<th>FullName</th>
-											<th>EDIT</th>
-											<th>DELETE</th>
-										</tr>
-									</thead>
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas fa-table mr-1"></i> DataTable Example
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
+							<thead>
+								<tr>
+									<th>User</th>
+									<th>FullName</th>
+									<th>EDIT</th>
+									<th>DELETE</th>
+								</tr>
+							</thead>
 
 
-									<c:forEach var="user" items="${listUser}"
-										varStatus="status">
-										<tr>
-											<td>${user.username}</td>
-											<td>${user.fullname}</td>
+							<c:forEach var="user" items="${listUser}" varStatus="status">
+								<tr>
+									<td>${user.username}</td>
+									<td>${user.fullname}</td>
+									<td><a href="user/edit/${user.username}">Edit</a></td>
+									<td><a href="user/delete/${user.username}">Delete</a></td>
+								</tr>
 
-											<td>
-												<button type="button" class="btn btn-primary">EDIT</button>
-											</td>
-											<td>
-												<button type="button" class="btn btn-primary">Delete</button>
-											</td>
-										</tr>
+							</c:forEach>
 
-									</c:forEach>
-
-									</tbody>
-								</table>
-							</div>
-						</div>
+							</tbody>
+						</table>
 					</div>
 				</div>
-			</main>			
+			</div>
+		</div>
+	</main>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		crossorigin="anonymous"></script>
 	<script

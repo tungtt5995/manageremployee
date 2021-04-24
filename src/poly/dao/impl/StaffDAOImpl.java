@@ -1,6 +1,10 @@
 package poly.dao.impl;
 
+
+
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -9,7 +13,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import poly.dao.StaffDao;
 import poly.entity.Staffs;
@@ -41,7 +44,7 @@ public class StaffDAOImpl implements StaffDao {
 
 	@Override
 	public boolean addStaff(Staffs staff) {
-		Session session = this.factory.openSession();
+		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		try {
 			session.save(staff);
@@ -75,7 +78,7 @@ public class StaffDAOImpl implements StaffDao {
 	}
 
 	@Override
-	public Staffs infoStaff(String id) {
+	public Staffs infoStaff(int id) {
 		Session session = factory.openSession();
 		try {
 			Staffs staff = (Staffs) session.get(Staffs.class, id);
@@ -90,7 +93,7 @@ public class StaffDAOImpl implements StaffDao {
 	}
 
 	@Override
-	public boolean deleteStaff(String id) {
+	public boolean deleteStaff(int id) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		Staffs staff = infoStaff(id);
@@ -98,7 +101,7 @@ public class StaffDAOImpl implements StaffDao {
 			return false;
 		}
 		try {
-			session.delete(id, staff);
+			session.delete(staff);
 			t.commit();
 			return true;
 		} catch (Exception e) {
@@ -107,7 +110,10 @@ public class StaffDAOImpl implements StaffDao {
 		} finally {
 			session.close();
 		}
+		
 	}
+
+
 
 	
 

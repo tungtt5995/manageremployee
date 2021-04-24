@@ -11,5 +11,5 @@ public interface DepartDao {
 
 	public boolean editDepart(Departs depart);
 
-	public Departs inforDepart(String id);
+	public Departs inforDepart(Integer id);
 }
